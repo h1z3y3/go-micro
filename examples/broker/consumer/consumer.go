@@ -15,6 +15,7 @@ var (
 )
 
 // Example of a shared subscription which receives a subset of messages
+// Multiple consumers with same `Queue` name will share the messages.
 func sharedSub() {
 	_, err := broker.Subscribe(topic, func(p broker.Event) error {
 		fmt.Println("[sub] received message:", string(p.Message().Body), "header", p.Message().Header)
